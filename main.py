@@ -4,7 +4,7 @@ import requests
 from math import ceil
 import os
 
-TOKEN = "ODgwNTcxNjkzOTg1MzIwOTkw.YSgOTA.JJBa0YzLSFex_CK0vsqnNBUk5jg"
+TOKEN = "YOUR TOKEN HERE"
 DIR_PATH = os.path.dirname(__file__)
 
 client = commands.Bot(command_prefix="d.")
