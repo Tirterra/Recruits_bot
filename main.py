@@ -1,25 +1,21 @@
-import discord
+from discord import embeds
+from get_lvl import get_skill_lvl, get_slayer_lvl, get_dungeon_lvl, get_skills, get_slayers, get_dungeons
+from get_weight import get_dungeon_weight, get_skills_weight, get_slayers_weight
+from get_played_profile import get_current
 from discord.ext import commands
+from weight_embed import create_weight_embed
+from math import ceil, floor
 import requests
-from math import ceil
+import discord
+import math
+import json
+from get_skin import get_avatar
 import os
 
-TOKEN = "YOUR TOKEN HERE"
+TOKEN = "ODgwNTcxNjkzOTg1MzIwOTkw.YSgOTA.zpGPIr-HF-ZTZesC8rvh0XzVELo"
 DIR_PATH = os.path.dirname(__file__)
 
 client = commands.Bot(command_prefix="d.")
-
-
-def get_current(arg):
-
-    url = f"https://sky.shiiyu.moe/api/v2/profile/{arg}"
-    res = requests.get(url).json()
-    profiles = res["profiles"]
-
-    for profile in profiles:
-        current = profiles[profile]["current"]
-        if current is True:
-            return profile
 
 @client.event
 async def on_ready():
@@ -34,18 +30,20 @@ async def ping(ctx):
 @client.command()
 async def weight(ctx, arg):
 
-    print(ctx.message.author.id)
-
     url = f"https://sky.shiiyu.moe/api/v2/profile/{arg}"
     res = requests.get(url).json()
+
+    with open(DIR_PATH+r"\data.json", "w+") as file:
+        json.dump(res, file, indent=4)
 
     if "error" in res.keys():
         await ctx.send(f"Couldn't find {arg}")
         return
     else:
-        current = get_current(arg)
-        weight = ceil(res["profiles"][current]["data"]["weight"])
-        await ctx.send(f"{arg}'s weight on {res['profiles'][current]['cute_name']} is {weight} weight.")
+        current = get_current(res)
+    
+    embed = create_weight_embed(arg, res, current)
 
+    await ctx.send(embed=embed)
 
 client.run(TOKEN)
