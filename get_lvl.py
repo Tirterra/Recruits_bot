@@ -1,11 +1,17 @@
+import requests
+from math import floor
+import os
+import json
+from requests.models import HTTPError
+
 try:
     from math import round
 except:
     pass
 
-def get_skill_lvl(exp, cap=60):
+def get_skill_lvl(player_xp, cap):
     
-    skills = {
+    required_xp = {
         50 : 1,	
         175	: 2,
         375	: 3,
@@ -68,21 +74,25 @@ def get_skill_lvl(exp, cap=60):
         111672425 :	60,
     }
 
-    for i in skills.keys():
-        level = skills[i]
-        if exp >= i : 
+    previous = 0
+
+    for xp in required_xp.keys():
+
+        level = required_xp[xp]
+
+        if player_xp >= xp : 
             if level == cap:
-                return {"level": level, "overflow" : exp - i}
+                return {"level": level, "overflow" : player_xp - xp}
             else:
-                previous = i
+                previous = xp
         else:
-            level = round(level - 1 + (exp-previous) / (i-previous), 2)
-            return {"level": level, "overflow" : 0}
+            level = level - 1 + (player_xp-previous) / (xp-previous)
+            return {"level": round(level, 2), "overflow" : 0}
 
 
-def get_slayer_lvl(exp):
+def get_slayer_lvl(player_xp):
 
-    slayers = {
+    required_xp = {
         5 : 1,	
         15 : 2,
         200 : 3,	
@@ -94,19 +104,23 @@ def get_slayer_lvl(exp):
         1000000 : 9,
     }
 
-    for i in slayers.keys():
-        if exp >= i : 
-            if exp >= 1000000:
-                return 9
+    previous = 0
+
+    for xp in required_xp.keys():
+        level = required_xp[xp]
+        if player_xp >= xp : 
+            if player_xp >= 1000000:
+                return {"level" : 9, "overflow" : player_xp - 1000000, "exp" : player_xp}
             else:
-                pass
+                previous = xp
         else:
-            return slayers[i]-1 
+            level = level - 1 + (player_xp-previous) / (xp-previous)
+            return {"level" : round(level, 2), "overflow" : 0, "exp" : player_xp} 
 
 
-def get_dungeon_lvl(exp):
+def get_dungeon_lvl(player_xp):
 
-    dungeons = {
+    required_xp = {
         50 : 1,	
         125	: 2,
         235	: 3,
@@ -161,23 +175,36 @@ def get_dungeon_lvl(exp):
 
     previous = 0
 
-    for i in dungeons.keys():
-        level = dungeons[i]
-        if exp >= i : 
-            if exp >= 569809640:
-                return {"level" : 50, "overflow" : exp - 569809640}
+    for xp in required_xp.keys():
+
+        level = required_xp[xp]
+
+        if player_xp >= xp : 
+
+            if player_xp >= 569809640:
+                return {"level" : 50, "overflow" : player_xp - 569809640}
             else:
-                previous = i
+                previous = xp
+
         else:
-            level = level - 1 + (exp-previous) / (i-previous)
-            return {"level" : level, "overflow" : 0}
+            level = level - 1 + (player_xp-previous) / (xp-previous)
+            return {"level" : round(level, 2), "overflow" : 0}
 
 
-def get_skills(res, current):
+def get_skills(res):
 
-    caps = {"farming" : 60, "combat" : 60, "foraging" : 50, "enchanting" : 60, "alchemy" : 50, "taming" : 50, "fishing" : 50, "mining" : 60}
+    caps = {
+        "farming" : 60,
+        "combat" : 60,
+        "foraging" : 50,
+        "enchanting" : 60,
+        "alchemy" : 50,
+        "taming" : 50,
+        "fishing" : 50,
+        "mining" : 60,
+        }
 
-    skill_lvl = {
+    skills = {
         "mining" : None,
         "foraging" : None,
         "enchanting" : None,
@@ -188,45 +215,58 @@ def get_skills(res, current):
         "taming" : None,
     }
 
-    for skill in skill_lvl:
+    sa = 0
+    true_sa = 0
+
+    for skill in skills:
 
         try:
-            cap = res["profiles"][current]["data"]["levels"][skill]["levelCap"]
+            xp = eval(f"res['experience_skill_{skill}']")
         except KeyError:
-            cap = caps[skill]
-        
-        xp = res["profiles"][current]["data"]["levels"][skill]["xp"]
+            xp = 0
+
+        cap = caps[skill]
         lvl = get_skill_lvl(xp, cap)
-        skill_lvl.update({skill : lvl})
+        skills.update({skill : lvl})
+        true_sa += floor(lvl["level"])
+        sa += lvl["level"]
+        
+    sa = round(sa / 8, 2)
+    true_sa = true_sa / 8
+    skills.update({"skill_average" : {"normal" : true_sa, "overflow" : sa}})
 
-    return skill_lvl
+    return skills
 
 
-def get_slayers(res, current):
+def get_slayers(res):
 
-    slayer_lvl = {
+    slayers = {
         "zombie" : None,
         "spider" : None,
         "wolf" : None,
         "enderman" : None
     }
 
-    for slayer in slayer_lvl:
+    total_xp = 0
+
+    for slayer in slayers:
         
         try:
-            exp = res['profiles'][current]["data"]["slayers"][slayer]["xp"]
+            exp = res["slayer_bosses"][slayer]["xp"]
         except KeyError:
             exp = 0
 
+        total_xp += exp
         lvl = get_slayer_lvl(exp)
-        slayer_lvl.update({slayer : lvl})
-    
-    return slayer_lvl
+        slayers.update({slayer : lvl})
+
+    slayers.update({"total" : total_xp})
+    return slayers
 
 
-def get_dungeons(res, current):
+def get_dungeons(res):
 
-    dungeon_lvl = {
+    dungeons = {
         "healer" : None,
         "mage" : None,
         "berserk" : None,
@@ -234,19 +274,48 @@ def get_dungeons(res, current):
         "tank" : None
     }
 
-    for class_ in dungeon_lvl:
+    for class_ in dungeons:
         try:
-            class_xp = res["profiles"][current]["data"]["dungeons"]["classes"][class_]["experience"]["xp"]
+            class_xp = res["dungeons"]["player_classes"][class_]["experience"]
         except KeyError:
             class_xp = 0
         
         class_lvl = get_dungeon_lvl(class_xp)
-        dungeon_lvl.update({class_ : class_lvl})
+        dungeons.update({class_ : class_lvl})
 
-    try:
-        cata_exp = res["profiles"][current]["data"]["dungeons"]["catacombs"]["level"]["xp"]
-    except KeyError:
-        cata_exp = 0
+        try:
+            cata_exp = res["dungeons"]["dungeon_types"]["catacombs"]["experience"]
+        except KeyError:
+            cata_exp = 0
 
-    dungeon_lvl.update({"catacomb" : get_dungeon_lvl(cata_exp)})
-    return dungeon_lvl
+    dungeons.update({"catacombs" : get_dungeon_lvl(cata_exp)})
+
+    return dungeons
+
+def get_secrets(url, player):
+
+    DIR_PATH = os.path.dirname(__file__)
+
+    for i in range(0, 2):
+
+        try:
+            res = requests.get(url)
+            res.raise_for_status() 
+            res = res.json()
+            secrets = res["player"]["achievements"]["skyblock_treasure_hunter"]
+            break
+        except HTTPError:
+            with open(DIR_PATH+r"\guild_data.json", "r") as file:
+                secrets = json.load(file)
+                try:
+                    secrets = secrets[player]["secrets"]
+                except KeyError:
+                    secrets = 0
+        except KeyError:
+            secrets = 0
+            break
+        else:
+            secrets = 0
+
+        
+    return secrets

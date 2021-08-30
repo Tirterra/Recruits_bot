@@ -1,89 +1,69 @@
+from get_lvl import get_dungeons, get_skills, get_slayers
+import requests
+
+
 try:
-    from math import ceil
+    from math import ceil, floor
     from get_lvl import get_skill_lvl, get_slayer_lvl, get_dungeon_lvl
 except:
     pass
 
-def get_skills_weight(data, current):
+def get_skills_weight(skills):
 
     total_skill_weight = 0
     total_skill_weight_overflow = 0
 
-    caps = {"farming" : 60, "combat" : 60, "foraging" : 50, "enchanting" : 60, "alchemy" : 50, "taming" : 50, "fishing" : 50, "mining" : 60}
-
-    skill_lvl = {
-        "mining" : None,
-        "foraging" : None,
-        "enchanting" : None,
-        "farming" : None,
-        "combat" : None,
-        "fishing" : None,
-        "alchemy" : None,
-        "taming" : None,
-    }
-
-    for skill in skill_lvl:
-
-        try:
-            cap = data["profiles"][current]["data"]["levels"][skill]["levelCap"]
-        except KeyError:
-            cap = caps[skill]
-
-        xp = data["profiles"][current]["data"]["levels"][skill]["xp"]
-        lvl = get_skill_lvl(xp, cap)
-        skill_lvl.update({skill : lvl})
-
-    skill_weight = {
+    skills_weight = {
         "mining" : {
-            "normal" : (skill_lvl["mining"]["level"]*10)**(0.5+1.18207448+skill_lvl["mining"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["mining"]["overflow"]/259634)**0.968,
+            "normal" : (skills["mining"]["level"]*10)**(0.5+1.18207448+skills["mining"]["level"]/100) / 1250,
+            "overflow" : (skills["mining"]["overflow"]/259634)**0.968,
             },
         "foraging" : {
-            "normal" : (skill_lvl["foraging"]["level"]*10)**(0.5+1.232826+skill_lvl["foraging"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["foraging"]["overflow"]/259634)**0.968,
+            "normal" : (skills["foraging"]["level"]*10)**(0.5+1.232826+skills["foraging"]["level"]/100) / 1250,
+            "overflow" : (skills["foraging"]["overflow"]/259634)**0.968,
             },
         "enchanting" : {
-            "normal" : (skill_lvl["enchanting"]["level"]*10)**(0.5+0.96976583+skill_lvl["enchanting"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["enchanting"]["overflow"]/882758)**0.968,
+            "normal" : (skills["enchanting"]["level"]*10)**(0.5+0.96976583+skills["enchanting"]["level"]/100) / 1250,
+            "overflow" : (skills["enchanting"]["overflow"]/882758)**0.968,
             },
         "farming" : {
-            "normal" : (skill_lvl["farming"]["level"]*10)**(0.5+1.217848139+skill_lvl["farming"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["farming"]["overflow"]/220689)**0.968,
+            "normal" : (skills["farming"]["level"]*10)**(0.5+1.217848139+skills["farming"]["level"]/100) / 1250,
+            "overflow" : (skills["farming"]["overflow"]/220689)**0.968,
             },
         "combat" : {
-            "normal" : (skill_lvl["combat"]["level"]*10)**(0.5+1.15797687265+skill_lvl["combat"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["combat"]["overflow"]/275862)**0.968,
+            "normal" : (skills["combat"]["level"]*10)**(0.5+1.15797687265+skills["combat"]["level"]/100) / 1250,
+            "overflow" : (skills["combat"]["overflow"]/275862)**0.968,
             },
         "fishing" : {
-            "normal" : (skill_lvl["fishing"]["level"]*10)**(0.5+1.406418+skill_lvl["fishing"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["fishing"]["overflow"]/88274)**0.968,
+            "normal" : (skills["fishing"]["level"]*10)**(0.5+1.406418+skills["fishing"]["level"]/100) / 1250,
+            "overflow" : (skills["fishing"]["overflow"]/88274)**0.968,
             },
         "alchemy" : {
-            "normal" : (skill_lvl["alchemy"]["level"]*10)**(0.5+1.0+skill_lvl["alchemy"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["alchemy"]["overflow"]/1103448)**0.968,
+            "normal" : (skills["alchemy"]["level"]*10)**(0.5+1.0+skills["alchemy"]["level"]/100) / 1250,
+            "overflow" : (skills["alchemy"]["overflow"]/1103448)**0.968,
             },
         "taming" : {
-            "normal" : (skill_lvl["taming"]["level"]*10)**(0.5+1.14744+skill_lvl["taming"]["level"]/100) / 1250,
-            "overflow" : (skill_lvl["taming"]["overflow"]/441379)**0.968,
+            "normal" : (skills["taming"]["level"]*10)**(0.5+1.14744+skills["taming"]["level"]/100) / 1250,
+            "overflow" : (skills["taming"]["overflow"]/441379)**0.968,
             },
     }
 
-    for skill in skill_weight:
-        skill_weight[skill]["normal"] = ceil(skill_weight[skill]["normal"])
-        skill_weight[skill]["overflow"] = ceil(skill_weight[skill]["overflow"])
-        total_skill_weight += skill_weight[skill]["normal"]
-        total_skill_weight_overflow += skill_weight[skill]["overflow"]
+    for skill in skills_weight:
+        skills_weight[skill]["normal"] = ceil(skills_weight[skill]["normal"])
+        skills_weight[skill]["overflow"] = ceil(skills_weight[skill]["overflow"])
+        total_skill_weight += skills_weight[skill]["normal"]
+        total_skill_weight_overflow += skills_weight[skill]["overflow"]
 
-    skill_weight.update({
+    skills_weight.update({
         "total" : {
             "normal" : ceil(total_skill_weight),
             "overflow" : ceil(total_skill_weight_overflow),
         },
     })
-    return skill_weight
+    return skills_weight
 
 
-def get_slayers_weight(data, current):
+def get_slayers_weight(slayers):
 
     def slayer_function(exp, divider, modifier):
 
@@ -106,26 +86,13 @@ def get_slayers_weight(data, current):
             
             return {"normal" : normal_weight, "overflow" : overflow}
 
-
-    try:
-        rev_xp = data['profiles'][current]["data"]["slayers"]["zombie"]["xp"]
-    except KeyError:
-        rev_xp = 0  
-    try:
-        tara_xp = data['profiles'][current]["data"]["slayers"]["spider"]["xp"]
-    except KeyError:
-        tara_xp = 0
-    try:
-        sven_xp = data['profiles'][current]["data"]["slayers"]["wolf"]["xp"]
-    except KeyError:
-        sven_xp = 0
-    try:
-        enderman_xp = data['profiles'][current]["data"]["slayers"]["enderman"]["xp"]
-    except KeyError:
-        enderman_xp = 0
-
     total_slayer_weight = 0
     total_overflow_slayer_weight = 0
+
+    rev_xp = slayers["zombie"]["exp"]
+    tara_xp = slayers["spider"]["exp"]
+    sven_xp = slayers["wolf"]["exp"]
+    enderman_xp = slayers["enderman"]["exp"]
 
 
     slayers_weight = {
@@ -151,10 +118,10 @@ def get_slayers_weight(data, current):
     return slayers_weight
 
 
-def get_dungeon_weight(data, current):
+def get_dungeons_weight(dungeons):
 
     dungeons_weight = {
-        "catacomb" : None,
+        "catacombs" : None,
         "healer" : None,
         "mage" : None,
         "berserk" : None,
@@ -164,17 +131,10 @@ def get_dungeon_weight(data, current):
 
     total = 0
     total_overflow = 0
-
-    try:
-        cata_exp = data["profiles"][current]["data"]["dungeons"]["catacombs"]["level"]["xp"]
-    except:
-        cata_exp = 0
-
-    cata_lvl = get_dungeon_lvl(cata_exp)
-    
-    catacomb_weight = cata_lvl["level"]**4.5 * 0.0002149604615
-    overflow_dungeon_weight = (cata_lvl["overflow"]/251288.2695)**0.968
-    dungeons_weight.update({"catacomb" : {"normal" : catacomb_weight, "overflow" : overflow_dungeon_weight }}) 
+    cata_lvl = dungeons["catacombs"]["level"]
+    catacombs_weight = cata_lvl**4.5 * 0.0002149604615
+    overflow_dungeons_weight = (dungeons["catacombs"]["overflow"] / 251288.2695)**0.968
+    dungeons_weight.update({"catacombs" : {"normal" : catacombs_weight, "overflow" : overflow_dungeons_weight }}) 
 
     for class_ in dungeons_weight:
 
@@ -182,19 +142,14 @@ def get_dungeon_weight(data, current):
             pass
         else:
 
-            try:
-                class_xp = data["profiles"][current]["data"]["dungeons"]["classes"][class_]["experience"]["xp"]
-            except KeyError:
-                class_xp = 0
-
-            class_lvl = get_dungeon_lvl(class_xp)
-
-            class_weight = class_lvl["level"]**4.5 * 0.0000045254834
-            overflow_class_weight = (class_lvl["overflow"]/11936192.8)**0.968
-
+            class_lvl = dungeons[class_]["level"]
+            class_weight = class_lvl**4.5 * 0.0000045254834
+            overflow_class_weight = (dungeons[class_]["overflow"] / 11936192.8)**0.968
             dungeons_weight.update({class_ : {"normal" : class_weight, "overflow" : overflow_class_weight}})
 
     for i in dungeons_weight:
+        dungeons_weight[i]["normal"] = ceil(dungeons_weight[i]["normal"])
+        dungeons_weight[i]["overflow"] = ceil(dungeons_weight[i]["overflow"])
         total += dungeons_weight[i]["normal"]
         total_overflow += dungeons_weight[i]["overflow"]
 
@@ -206,3 +161,33 @@ def get_dungeon_weight(data, current):
     })
 
     return dungeons_weight
+
+def get_weight(profile, uuid):
+
+    API_KEY = "YOUR API KEY"
+    url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
+    res = requests.get(url).json()["profile"]["members"][uuid]
+
+    dungeons = get_dungeons(res)
+    slayers = get_slayers(res)
+    skills = get_skills(res)
+
+    dungeons_weight = get_dungeons_weight(dungeons)
+    slayers_weight = get_slayers_weight(slayers)
+    skills_weight = get_skills_weight(skills)
+    
+    weight = {
+        "total" : {
+            "normal" : dungeons_weight["total"]["normal"] +\
+                       slayers_weight["total"]["normal"] +\
+                       skills_weight["total"]["normal"],
+            "overflow" : dungeons_weight["total"]["overflow"] +\
+                         slayers_weight["total"]["overflow"] +\
+                         skills_weight["total"]["overflow"],
+        },
+        "skills" : skills_weight,
+        "slayers" : slayers_weight,
+        "catacombs" : dungeons_weight,
+    }
+
+    return (weight, dungeons, slayers, skills)
