@@ -1,9 +1,12 @@
 import requests
 from requests.models import HTTPError
+import json
+import os
 
 def get_current(uuid):
 
-    API_KEY = "YOUR API KEY"
+    DIR_PATH = os.path.dirname(__file__)
+    with open(DIR_PATH+r"\credentials.json", "r+") as file : API_KEY = json.load(file)["API_KEY"]
 
     for _ in range(0, 2):
 

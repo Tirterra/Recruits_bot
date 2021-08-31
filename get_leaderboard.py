@@ -34,7 +34,7 @@ def get_leaderboard(arg):
             return "revenants"
         elif arg.lower() == "tara" or arg.lower() == "taras":
             return "tarantula"
-        elif arg.lower == "we":
+        elif arg.lower() == "we":
             return "weight"
         else:
             return arg

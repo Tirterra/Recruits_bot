@@ -1,7 +1,8 @@
 from math import floor, ceil
+from os import stat
 from discord import embeds
 from get_weight import get_dungeons_weight, get_skills_weight, get_slayers_weight
-from get_lvl import get_slayer_lvl, get_dungeon_lvl, get_skill_lvl, get_dungeons, get_skills, get_slayers
+from get_lvl import get_secrets, get_slayer_lvl, get_dungeon_lvl, get_skill_lvl, get_dungeons, get_skills, get_slayers
 import discord
 from get_skin import get_avatar
 
@@ -81,7 +82,7 @@ def get_guild_average(leaderboard):
 def get_rank(leaderboard, target):
 
     for rank, player in enumerate(leaderboard):
-        if player == target:
+        if player.lower() == target.lower():
             return rank
 
 def link_embed(discord_name, minecraft_name):
@@ -99,12 +100,12 @@ def leaderboard_embed(book, page, leaderbord, average, pos):
 
             player = list(value.keys())[0]
             rank = (page - 1) * 10 + index
-            leaderboard_embed += f"#{rank+1}" + (4-len(str(rank)))*" " + f": {player}\n     > {value[player]}\n" 
+            leaderboard_embed += str(f"#{rank+1}" + (4-len(str(rank)))*" " + f": {player}\n     > {'{:,}'.format(value[player])}\n") 
 
         field = str(f"```{leaderboard_embed}```")
         embed = discord.Embed(
             title=f"Recruits's {leaderbord} Leaderboard",
-            description=f"The guild {leaderbord} average is **{round(average, 2)}** !"
+            description=f"The guild {leaderbord} average is **{'{:,}'.format(round(average, 2))}** !"
             )
         embed.add_field(name="\u200b", value=field)
         embed.set_footer(text=f"You are ranked #{pos+1} in guild")
@@ -115,3 +116,67 @@ def leaderboard_embed(book, page, leaderbord, average, pos):
 
         embed = discord.Embed(title="IndexError", description=f"The list isn't that big: the last page is {len(book)}")
         return embed
+
+
+def stats_embed(stats, arg):
+
+    embed = discord.Embed(titel=f"Stats", description=f"**{arg}'s Profile Overview !**")
+    embed.add_field(name="**Average Skill Level**", value=f"{stats['average_skill']}, \
+    true sa: {stats['true_average_skill']}")
+    embed.add_field(name="**Catacombs level**", value=stats["catacombs_level"])
+    embed.add_field(name="Slayers", value=f"{stats['slayers_xp']} Total XP !")
+    embed.add_field(name="Weight", value=f"{stats['normal_weight']} + {stats['overflow_weight']}\n\
+({stats['normal_weight']+stats['overflow_weight']} Total)")
+    embed.add_field(name="Coins", value='{:,}'.format(ceil(stats["coins"])))
+    embed.add_field(name="Minion Slots", value=stats["minions"])
+    embed.add_field(name="Pets", value=stats["pets"])
+    embed.add_field(name="Collection tiers unlocked", value=stats["collections"])
+
+    return embed
+
+
+def dungeons_embed(dungeons, secrets, arg):
+
+    embed = discord.Embed(titel=f"**{arg}'s Dungeon Catacombs**", description=f"{arg} is catacomb level {dungeons['catacombs']['level']}")
+    embed.add_field(name="Healer", value=f"Level: {dungeons['healer']['level']}")
+    embed.add_field(name="Mage", value=f"Level: {dungeons['mage']['level']}")
+    embed.add_field(name="Berserk", value=f"Level: {dungeons['berserk']['level']}")
+    embed.add_field(name="Archer", value=f"Level: {dungeons['archer']['level']}")
+    embed.add_field(name="Tank", value=f"Level: {dungeons['tank']['level']}")
+    embed.add_field(name="Secrets", value=secrets)
+
+    clears_str = ""
+
+    try:
+        clears_str += f"Entrance: {dungeons['clears']['entrance']}\n"
+        clears_str += f"f1: {dungeons['clears']['f1']}\n"
+        clears_str += f"f2: {dungeons['clears']['f2']}\n"
+        clears_str += f"f3: {dungeons['clears']['f3']}\n"
+        clears_str += f"f4: {dungeons['clears']['f4']}\n"
+        clears_str += f"f5: {dungeons['clears']['f5']}\n"
+        clears_str += f"f6: {dungeons['clears']['f6']}\n"
+        clears_str += f"f7: {dungeons['clears']['f7']}\n"
+    except:
+        pass
+
+    clears_embed = str(f"""```{clears_str}```""")
+    embed.add_field(name="Floor clears", value=clears_embed)
+
+    fastest_times_str = ""
+    try:
+        fastest_times_str += f"Entrance: {dungeons['fastest_times']['entrance']['minutes']}:{dungeons['fastest_times']['entrance']['seconds']}\n"
+        fastest_times_str += f"floor 1:  {dungeons['fastest_times']['f1']['minutes']}:{dungeons['fastest_times']['f1']['seconds']}\n"
+        fastest_times_str += f"floor 2:  {dungeons['fastest_times']['f2']['minutes']}:{dungeons['fastest_times']['f2']['seconds']}\n"
+        fastest_times_str += f"floor 3:  {dungeons['fastest_times']['f3']['minutes']}:{dungeons['fastest_times']['f3']['seconds']}\n"
+        fastest_times_str += f"floor 4:  {dungeons['fastest_times']['f4']['minutes']}:{dungeons['fastest_times']['f4']['seconds']}\n"
+        fastest_times_str += f"floor 5:  {dungeons['fastest_times']['f5']['minutes']}:{dungeons['fastest_times']['f5']['seconds']}\n"
+        fastest_times_str += f"floor 6:  {dungeons['fastest_times']['f6']['minutes']}:{dungeons['fastest_times']['f6']['seconds']}\n"
+        fastest_times_str += f"floor 7:  {dungeons['fastest_times']['f7']['minutes']}:{dungeons['fastest_times']['f7']['seconds']}\n"
+    except :
+        pass
+
+    fastest_times_embed = str(f"""```{fastest_times_str}```""")
+
+    embed.add_field(name="Fastest Floor clears", value=fastest_times_embed)
+
+    return embed

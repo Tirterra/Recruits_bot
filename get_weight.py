@@ -1,5 +1,7 @@
 from get_lvl import get_dungeons, get_skills, get_slayers
 import requests
+import json
+import os
 
 
 try:
@@ -164,7 +166,8 @@ def get_dungeons_weight(dungeons):
 
 def get_weight(profile, uuid):
 
-    API_KEY = "YOUR API KEY"
+    DIR_PATH = os.path.dirname(__file__)
+    with open(DIR_PATH+r"\credentials.json", "r+") as file : API_KEY = json.load(file)["API_KEY"]
     url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
     res = requests.get(url).json()["profile"]["members"][uuid]
 

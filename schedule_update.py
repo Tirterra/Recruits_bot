@@ -1,15 +1,14 @@
+from get_lvl import get_secrets
 from requests.models import HTTPError
-from get_weight import get_dungeons_weight, get_skills_weight, get_slayers_weight, get_weight
-from get_lvl import get_dungeons, get_secrets, get_skills, get_slayers
+import schedule
 import time
-from get_played_profile import get_current
 import requests
-import time
-import asyncio
-import os
+from get_played_profile import get_current
+from get_weight import get_weight
 import json
+import os
 
-async def get_guild_list(GUILD_ID):
+def get_guild_list(GUILD_ID):
     
     DIR_PATH = os.path.dirname(__file__)
     with open(DIR_PATH+r"\credentials.json", "r+") as file : API_KEY = json.load(file)["API_KEY"]
@@ -26,7 +25,7 @@ def get_uuid(name):
     uuid = res["id"]
     return uuid
 
-async def update_player(member):
+def update_player(member):
 
     DIR_PATH = os.path.dirname(__file__)
     with open(DIR_PATH+r"\credentials.json", "r+") as file : API_KEY = json.load(file)["API_KEY"]
@@ -75,20 +74,18 @@ async def update_player(member):
     return {name : player_data}
 
 
-async def update_data():
+def update_data():
 
     print("Started update")
 
     DIR_PATH = os.path.dirname(__file__)
-    task = asyncio.create_task(get_guild_list(GUILD_ID="5ec14e148ea8c93479da0f4b"))
-    guild_list = await task
+    guild_list = get_guild_list(GUILD_ID="5ec14e148ea8c93479da0f4b")
     start = time.time()
     data = {}
 
     for count, member in enumerate(guild_list):
 
-        task = asyncio.create_task(update_player(member))
-        player_data = await task
+        player_data = update_player(member)
 
         if player_data is None:
             continue
@@ -98,3 +95,10 @@ async def update_data():
     with open(DIR_PATH+r"\guild_data.json", "w+") as file:
         json.dump(data, file, indent=4)
 
+schedule.every().day.at("00:00").do(update_data)
+print("Started schedule")
+
+while True:
+    print("Scheduling")
+    schedule.run_pending()
+    time.sleep(1)

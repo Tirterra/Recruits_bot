@@ -22,21 +22,21 @@
         "skill_average": 49.75
     },
     "rhythmxecho": {
-        "weight": 23790,
-        "slayers": 11049625,
+        "weight": 23841,
+        "slayers": 11107125,
         "catacombs": 48.59,
         "secrets": 48254,
         "revenants": 7130875,
         "svens": 1000000,
         "tarantula": 2000000,
-        "enderman": 918750,
+        "enderman": 976250,
         "skill_average": 54.625
     },
     "Stargazers": {
-        "weight": 13194,
+        "weight": 13220,
         "slayers": 8145850,
-        "catacombs": 43.8,
-        "secrets": 44484,
+        "catacombs": 43.84,
+        "secrets": 44938,
         "revenants": 6359090,
         "svens": 498980,
         "tarantula": 1000000,
@@ -44,7 +44,7 @@
         "skill_average": 48.75
     },
     "Monuim": {
-        "weight": 11625,
+        "weight": 11668,
         "slayers": 8613435,
         "catacombs": 43.36,
         "secrets": 12059,
@@ -55,7 +55,7 @@
         "skill_average": 46.0
     },
     "Sp1ked": {
-        "weight": 14623,
+        "weight": 14629,
         "slayers": 13792500,
         "catacombs": 36.22,
         "secrets": 10745,
@@ -99,7 +99,7 @@
         "skill_average": 44.375
     },
     "Cozuni": {
-        "weight": 8198,
+        "weight": 8199,
         "slayers": 2683450,
         "catacombs": 37.81,
         "secrets": 14755,
@@ -121,23 +121,23 @@
         "skill_average": 52.75
     },
     "Delvis_": {
-        "weight": 11882,
-        "slayers": 2112195,
-        "catacombs": 34.01,
-        "secrets": 24823,
+        "weight": 11913,
+        "slayers": 2112820,
+        "catacombs": 34.04,
+        "secrets": 24934,
         "revenants": 1063420,
         "svens": 400505,
         "tarantula": 400055,
-        "enderman": 248215,
+        "enderman": 248840,
         "skill_average": 51.5
     },
     "fragmepls": {
-        "weight": 10613,
-        "slayers": 5579321,
+        "weight": 10711,
+        "slayers": 5766821,
         "catacombs": 37.15,
         "secrets": 17451,
-        "revenants": 4677000,
-        "svens": 459500,
+        "revenants": 4825125,
+        "svens": 498875,
         "tarantula": 440000,
         "enderman": 2821,
         "skill_average": 50.25
@@ -165,7 +165,7 @@
         "skill_average": 48.0
     },
     "TheEvilBadCat": {
-        "weight": 11138,
+        "weight": 11141,
         "slayers": 3030010,
         "catacombs": 15.68,
         "secrets": 379,
@@ -198,10 +198,10 @@
         "skill_average": 50.75
     },
     "Razz253": {
-        "weight": 24683,
+        "weight": 24762,
         "slayers": 23851255,
-        "catacombs": 49.81,
-        "secrets": 61149,
+        "catacombs": 49.89,
+        "secrets": 61633,
         "revenants": 11699000,
         "svens": 1102625,
         "tarantula": 10010475,
@@ -209,7 +209,7 @@
         "skill_average": 52.5
     },
     "LugiaGaming": {
-        "weight": 24286,
+        "weight": 24304,
         "slayers": 15006125,
         "catacombs": 45.05,
         "secrets": 26871,
@@ -275,15 +275,15 @@
         "skill_average": 47.25
     },
     "Shwooom": {
-        "weight": 8298,
-        "slayers": 5438260,
-        "catacombs": 32.85,
-        "secrets": 17266,
-        "revenants": 3962550,
-        "svens": 405075,
+        "weight": 8385,
+        "slayers": 5485760,
+        "catacombs": 32.94,
+        "secrets": 18065,
+        "revenants": 4005675,
+        "svens": 409450,
         "tarantula": 1000225,
         "enderman": 70410,
-        "skill_average": 46.5
+        "skill_average": 46.625
     },
     "Bliiuwu": {
         "weight": 9323,
@@ -308,7 +308,7 @@
         "skill_average": 50.25
     },
     "Ribery931": {
-        "weight": 15153,
+        "weight": 15154,
         "slayers": 4156725,
         "catacombs": 34.77,
         "secrets": 21788,
@@ -341,14 +341,14 @@
         "skill_average": 50.125
     },
     "GildePilsener": {
-        "weight": 9165,
-        "slayers": 2589288,
+        "weight": 9350,
+        "slayers": 3433050,
         "catacombs": 38.35,
         "secrets": 23546,
-        "revenants": 1413950,
+        "revenants": 2257700,
         "svens": 1006875,
         "tarantula": 167655,
-        "enderman": 808,
+        "enderman": 820,
         "skill_average": 48.25
     },
     "playlsited": {
@@ -363,10 +363,10 @@
         "skill_average": 50.25
     },
     "Sparkcy": {
-        "weight": 10418,
+        "weight": 10460,
         "slayers": 5400305,
-        "catacombs": 30.86,
-        "secrets": 7610,
+        "catacombs": 31.01,
+        "secrets": 7832,
         "revenants": 3228500,
         "svens": 1083350,
         "tarantula": 1068400,
@@ -374,11 +374,11 @@
         "skill_average": 48.5
     },
     "MasPot": {
-        "weight": 9276,
-        "slayers": 2227876,
-        "catacombs": 34.15,
+        "weight": 9303,
+        "slayers": 2282251,
+        "catacombs": 34.16,
         "secrets": 14997,
-        "revenants": 1094805,
+        "revenants": 1149180,
         "svens": 132180,
         "tarantula": 1000586,
         "enderman": 305,
@@ -407,14 +407,14 @@
         "skill_average": 47.75
     },
     "Smokyy_": {
-        "weight": 10376,
-        "slayers": 9864500,
+        "weight": 10394,
+        "slayers": 9882000,
         "catacombs": 39.2,
-        "secrets": 21616,
+        "secrets": 21617,
         "revenants": 6676750,
         "svens": 2629250,
         "tarantula": 274250,
-        "enderman": 284250,
+        "enderman": 301750,
         "skill_average": 46.375
     },
     "_grg": {
@@ -440,10 +440,10 @@
         "skill_average": 43.375
     },
     "VoltYk": {
-        "weight": 12298,
+        "weight": 12312,
         "slayers": 9574240,
-        "catacombs": 44.88,
-        "secrets": 54774,
+        "catacombs": 44.9,
+        "secrets": 55136,
         "revenants": 9117000,
         "svens": 100130,
         "tarantula": 256630,
@@ -484,7 +484,7 @@
         "skill_average": 55.0
     },
     "Dbacks444": {
-        "weight": 8452,
+        "weight": 8497,
         "slayers": 2171025,
         "catacombs": 35.5,
         "secrets": 9119,
@@ -517,14 +517,14 @@
         "skill_average": 54.125
     },
     "HugFrosty_": {
-        "weight": 9712,
-        "slayers": 1792111,
-        "catacombs": 37.84,
-        "secrets": 32879,
+        "weight": 9721,
+        "slayers": 1794236,
+        "catacombs": 37.86,
+        "secrets": 33006,
         "revenants": 1025000,
         "svens": 577155,
         "tarantula": 163425,
-        "enderman": 26531,
+        "enderman": 28656,
         "skill_average": 48.25
     },
     "ZepaLom": {
@@ -550,11 +550,11 @@
         "skill_average": 43.375
     },
     "Sqpp": {
-        "weight": 12096,
-        "slayers": 5843525,
+        "weight": 12168,
+        "slayers": 5845400,
         "catacombs": 36.62,
         "secrets": 17131,
-        "revenants": 4947850,
+        "revenants": 4949725,
         "svens": 400555,
         "tarantula": 475100,
         "enderman": 20020,
@@ -605,25 +605,25 @@
         "skill_average": 48.25
     },
     "UnKnown_X": {
-        "weight": 8905,
+        "weight": 8948,
         "slayers": 1290830,
-        "catacombs": 42.15,
-        "secrets": 14997,
+        "catacombs": 42.16,
+        "secrets": 15003,
         "revenants": 684890,
         "svens": 179330,
         "tarantula": 423905,
         "enderman": 2705,
-        "skill_average": 43.75
+        "skill_average": 43.875
     },
     "1d1d": {
-        "weight": 11000,
-        "slayers": 7989258,
+        "weight": 11003,
+        "slayers": 8000570,
         "catacombs": 37.49,
         "secrets": 14474,
         "revenants": 2158000,
-        "svens": 1486250,
+        "svens": 1497500,
         "tarantula": 4343775,
-        "enderman": 1233,
+        "enderman": 1295,
         "skill_average": 46.875
     },
     "xINicoAlex": {
@@ -649,10 +649,10 @@
         "skill_average": 50.25
     },
     "Mxngy": {
-        "weight": 11530,
+        "weight": 11533,
         "slayers": 2191515,
         "catacombs": 47.24,
-        "secrets": 36199,
+        "secrets": 36344,
         "revenants": 1000180,
         "svens": 151655,
         "tarantula": 1000880,
@@ -671,26 +671,15 @@
         "skill_average": 46.875
     },
     "Omegga_": {
-        "weight": 8532,
-        "slayers": 2484476,
+        "weight": 8589,
+        "slayers": 2504476,
         "catacombs": 35.83,
         "secrets": 10583,
         "revenants": 1856075,
         "svens": 325375,
         "tarantula": 175455,
-        "enderman": 127571,
-        "skill_average": 48.75
-    },
-    "ADudeInAChair": {
-        "weight": 8395,
-        "slayers": 2437255,
-        "catacombs": 41.73,
-        "secrets": 19017,
-        "revenants": 1969225,
-        "svens": 114375,
-        "tarantula": 238055,
-        "enderman": 115600,
-        "skill_average": 41.875
+        "enderman": 147571,
+        "skill_average": 48.875
     },
     "IllEatYourDoggo": {
         "weight": 8821,
@@ -704,10 +693,10 @@
         "skill_average": 47.5
     },
     "APhatL": {
-        "weight": 19270,
+        "weight": 19362,
         "slayers": 13053400,
-        "catacombs": 47.34,
-        "secrets": 28829,
+        "catacombs": 47.35,
+        "secrets": 28943,
         "revenants": 8416875,
         "svens": 224735,
         "tarantula": 3003630,
@@ -715,21 +704,21 @@
         "skill_average": 50.5
     },
     "DrenoDude23": {
-        "weight": 12242,
+        "weight": 12271,
         "slayers": 813675,
         "catacombs": 48.31,
-        "secrets": 44394,
+        "secrets": 44614,
         "revenants": 479500,
         "svens": 125085,
         "tarantula": 100555,
         "enderman": 108535,
-        "skill_average": 41.25
+        "skill_average": 41.375
     },
     "skelehunter": {
-        "weight": 9883,
+        "weight": 9972,
         "slayers": 9663625,
-        "catacombs": 31.71,
-        "secrets": 2794,
+        "catacombs": 31.92,
+        "secrets": 2973,
         "revenants": 6220125,
         "svens": 1984125,
         "tarantula": 1358000,
@@ -737,21 +726,21 @@
         "skill_average": 48.125
     },
     "ClamVortex": {
-        "weight": 8616,
-        "slayers": 600055,
+        "weight": 9774,
+        "slayers": 636305,
         "catacombs": 48.05,
         "secrets": 33992,
         "revenants": 424715,
         "svens": 104005,
         "tarantula": 35655,
-        "enderman": 35680,
-        "skill_average": 0.0
+        "enderman": 71930,
+        "skill_average": 32.375
     },
     "TomP123": {
-        "weight": 13716,
+        "weight": 13754,
         "slayers": 4866035,
-        "catacombs": 46.32,
-        "secrets": 30710,
+        "catacombs": 46.36,
+        "secrets": 30819,
         "revenants": 3416500,
         "svens": 179130,
         "tarantula": 1000000,
@@ -770,25 +759,25 @@
         "skill_average": 46.25
     },
     "sharqo": {
-        "weight": 8616,
-        "slayers": 3474290,
-        "catacombs": 36.83,
-        "secrets": 7798,
+        "weight": 8709,
+        "slayers": 3534915,
+        "catacombs": 36.94,
+        "secrets": 8001,
         "revenants": 2397130,
         "svens": 194780,
         "tarantula": 400630,
-        "enderman": 481750,
+        "enderman": 542375,
         "skill_average": 46.625
     },
     "Alluwu": {
-        "weight": 11118,
-        "slayers": 3489290,
-        "catacombs": 45.01,
-        "secrets": 26750,
+        "weight": 11265,
+        "slayers": 3491165,
+        "catacombs": 45.17,
+        "secrets": 27180,
         "revenants": 2344380,
         "svens": 426955,
         "tarantula": 602330,
-        "enderman": 115625,
+        "enderman": 117500,
         "skill_average": 44.25
     },
     "Nobiluga": {
@@ -803,10 +792,10 @@
         "skill_average": 0.0
     },
     "Venomised": {
-        "weight": 9631,
+        "weight": 9726,
         "slayers": 913198,
-        "catacombs": 46.25,
-        "secrets": 53959,
+        "catacombs": 46.36,
+        "secrets": 54624,
         "revenants": 400262,
         "svens": 170787,
         "tarantula": 241537,
@@ -825,10 +814,10 @@
         "skill_average": 0.0
     },
     "xGalactic_": {
-        "weight": 15051,
+        "weight": 15060,
         "slayers": 5896875,
-        "catacombs": 46.86,
-        "secrets": 49440,
+        "catacombs": 46.87,
+        "secrets": 49511,
         "revenants": 4282750,
         "svens": 456625,
         "tarantula": 1006625,
@@ -836,10 +825,10 @@
         "skill_average": 50.25
     },
     "N3E0": {
-        "weight": 8146,
+        "weight": 8218,
         "slayers": 5412175,
-        "catacombs": 37.73,
-        "secrets": 14918,
+        "catacombs": 37.93,
+        "secrets": 15009,
         "revenants": 4760875,
         "svens": 322600,
         "tarantula": 226950,
@@ -858,10 +847,10 @@
         "skill_average": 44.875
     },
     "MagicalMC": {
-        "weight": 12596,
+        "weight": 12614,
         "slayers": 1707133,
-        "catacombs": 47.29,
-        "secrets": 44389,
+        "catacombs": 47.3,
+        "secrets": 44428,
         "revenants": 1000022,
         "svens": 100805,
         "tarantula": 206305,
@@ -869,18 +858,18 @@
         "skill_average": 44.75
     },
     "TNTOJ": {
-        "weight": 10535,
-        "slayers": 2355106,
-        "catacombs": 38.83,
-        "secrets": 6866,
-        "revenants": 1000611,
+        "weight": 10576,
+        "slayers": 2460106,
+        "catacombs": 38.85,
+        "secrets": 6870,
+        "revenants": 1105611,
         "svens": 130455,
         "tarantula": 1000105,
         "enderman": 223935,
         "skill_average": 48.0
     },
     "vibinedu": {
-        "weight": 25,
+        "weight": 35,
         "slayers": 0,
         "catacombs": 0.0,
         "secrets": 7609,
@@ -888,7 +877,7 @@
         "svens": 0,
         "tarantula": 0,
         "enderman": 0,
-        "skill_average": 7.5
+        "skill_average": 9.625
     },
     "Blue_Combo": {
         "weight": 14740,
@@ -902,7 +891,7 @@
         "skill_average": 51.0
     },
     "Mansif": {
-        "weight": 15989,
+        "weight": 16104,
         "slayers": 4088250,
         "catacombs": 47.99,
         "secrets": 32971,
@@ -910,10 +899,10 @@
         "svens": 1000000,
         "tarantula": 583500,
         "enderman": 1504750,
-        "skill_average": 46.875
+        "skill_average": 47.0
     },
     "Tirterra": {
-        "weight": 19762,
+        "weight": 19764,
         "slayers": 7821932,
         "catacombs": 43.07,
         "secrets": 36596,
@@ -924,10 +913,10 @@
         "skill_average": 55.0
     },
     "talk2me": {
-        "weight": 12136,
+        "weight": 12185,
         "slayers": 15234500,
-        "catacombs": 40.4,
-        "secrets": 17732,
+        "catacombs": 40.5,
+        "secrets": 17899,
         "revenants": 13146250,
         "svens": 505000,
         "tarantula": 1482500,
@@ -935,10 +924,10 @@
         "skill_average": 47.625
     },
     "iRyani": {
-        "weight": 16634,
+        "weight": 16659,
         "slayers": 5624145,
-        "catacombs": 49.52,
-        "secrets": 29287,
+        "catacombs": 49.54,
+        "secrets": 29816,
         "revenants": 3978005,
         "svens": 100880,
         "tarantula": 194880,
@@ -946,25 +935,25 @@
         "skill_average": 43.0
     },
     "_ejg_": {
-        "weight": 10625,
-        "slayers": 2752665,
+        "weight": 10688,
+        "slayers": 2852665,
         "catacombs": 24.59,
         "secrets": 543,
         "revenants": 1001600,
-        "svens": 850000,
+        "svens": 924375,
         "tarantula": 526100,
-        "enderman": 374965,
+        "enderman": 400590,
         "skill_average": 53.0
     },
     "WTrouble": {
-        "weight": 11504,
-        "slayers": 3017715,
+        "weight": 11570,
+        "slayers": 3042090,
         "catacombs": 45.17,
         "secrets": 21303,
         "revenants": 2761000,
         "svens": 101505,
         "tarantula": 133705,
-        "enderman": 21505,
+        "enderman": 45880,
         "skill_average": 43.375
     },
     "JASSHU": {
@@ -979,18 +968,18 @@
         "skill_average": 48.125
     },
     "Dulkir": {
-        "weight": 12795,
-        "slayers": 2075615,
-        "catacombs": 46.49,
-        "secrets": 27922,
+        "weight": 12836,
+        "slayers": 2080615,
+        "catacombs": 46.52,
+        "secrets": 28111,
         "revenants": 1006630,
         "svens": 103605,
         "tarantula": 100755,
-        "enderman": 864625,
+        "enderman": 869625,
         "skill_average": 44.375
     },
     "Printer_Hp": {
-        "weight": 8674,
+        "weight": 8679,
         "slayers": 875156,
         "catacombs": 36.03,
         "secrets": 11695,
@@ -1001,10 +990,10 @@
         "skill_average": 50.375
     },
     "Assqult": {
-        "weight": 11902,
+        "weight": 11920,
         "slayers": 2167801,
-        "catacombs": 46.53,
-        "secrets": 74447,
+        "catacombs": 46.55,
+        "secrets": 74792,
         "revenants": 1000580,
         "svens": 233236,
         "tarantula": 700605,
@@ -1012,10 +1001,10 @@
         "skill_average": 41.25
     },
     "JonesPlaysMC": {
-        "weight": 11193,
+        "weight": 11254,
         "slayers": 3621416,
-        "catacombs": 44.21,
-        "secrets": 44723,
+        "catacombs": 44.26,
+        "secrets": 44822,
         "revenants": 2446125,
         "svens": 105000,
         "tarantula": 490650,
@@ -1045,7 +1034,7 @@
         "skill_average": 51.625
     },
     "BettiCrocker69": {
-        "weight": 9486,
+        "weight": 9512,
         "slayers": 2690643,
         "catacombs": 33.97,
         "secrets": 3321,
@@ -1056,7 +1045,7 @@
         "skill_average": 50.5
     },
     "Stormixou": {
-        "weight": 10714,
+        "weight": 10729,
         "slayers": 4574768,
         "catacombs": 37.09,
         "secrets": 17196,
@@ -1067,10 +1056,10 @@
         "skill_average": 50.0
     },
     "DogoTaco": {
-        "weight": 17786,
+        "weight": 17878,
         "slayers": 9559478,
-        "catacombs": 48.22,
-        "secrets": 44986,
+        "catacombs": 48.33,
+        "secrets": 45624,
         "revenants": 6753215,
         "svens": 1041305,
         "tarantula": 1000003,
@@ -1078,7 +1067,7 @@
         "skill_average": 49.75
     },
     "esybear": {
-        "weight": 8111,
+        "weight": 8113,
         "slayers": 1706481,
         "catacombs": 43.45,
         "secrets": 22904,
@@ -1089,29 +1078,18 @@
         "skill_average": 39.5
     },
     "ZoidYk": {
-        "weight": 13957,
-        "slayers": 8631625,
-        "catacombs": 45.78,
-        "secrets": 55163,
+        "weight": 13985,
+        "slayers": 8651000,
+        "catacombs": 45.79,
+        "secrets": 55384,
         "revenants": 7493500,
         "svens": 152625,
         "tarantula": 410000,
-        "enderman": 575500,
+        "enderman": 594875,
         "skill_average": 45.75
     },
-    "ZombieD3stroy3r": {
-        "weight": 8671,
-        "slayers": 3555515,
-        "catacombs": 34.32,
-        "secrets": 13030,
-        "revenants": 1974655,
-        "svens": 576905,
-        "tarantula": 1000155,
-        "enderman": 3800,
-        "skill_average": 49.375
-    },
     "Zedrux": {
-        "weight": 23549,
+        "weight": 23551,
         "slayers": 5587750,
         "catacombs": 50,
         "secrets": 63680,
@@ -1122,10 +1100,10 @@
         "skill_average": 52.25
     },
     "Frogless": {
-        "weight": 8471,
+        "weight": 8484,
         "slayers": 2123356,
-        "catacombs": 42.6,
-        "secrets": 16914,
+        "catacombs": 42.62,
+        "secrets": 17018,
         "revenants": 1000125,
         "svens": 120012,
         "tarantula": 1000505,
@@ -1133,7 +1111,7 @@
         "skill_average": 42.875
     },
     "Straylie": {
-        "weight": 18656,
+        "weight": 18668,
         "slayers": 11072655,
         "catacombs": 44.62,
         "secrets": 34003,
@@ -1155,10 +1133,10 @@
         "skill_average": 48.625
     },
     "BestWaifuu": {
-        "weight": 8662,
+        "weight": 8679,
         "slayers": 1665866,
-        "catacombs": 37.89,
-        "secrets": 17842,
+        "catacombs": 37.9,
+        "secrets": 17878,
         "revenants": 1001305,
         "svens": 232655,
         "tarantula": 411530,
@@ -1177,7 +1155,7 @@
         "skill_average": 53.375
     },
     "Anbak": {
-        "weight": 16677,
+        "weight": 16721,
         "slayers": 5936250,
         "catacombs": 42.47,
         "secrets": 53752,
@@ -1188,10 +1166,10 @@
         "skill_average": 53.375
     },
     "TechnoBridger": {
-        "weight": 11520,
+        "weight": 11534,
         "slayers": 1334752,
-        "catacombs": 47.27,
-        "secrets": 53626,
+        "catacombs": 47.29,
+        "secrets": 53811,
         "revenants": 1097610,
         "svens": 117555,
         "tarantula": 117780,
@@ -1199,7 +1177,7 @@
         "skill_average": 43.625
     },
     "SecretDuper": {
-        "weight": 8555,
+        "weight": 8565,
         "slayers": 1640032,
         "catacombs": 40.8,
         "secrets": 9596,
@@ -1224,7 +1202,7 @@
         "weight": 4120,
         "slayers": 22441312,
         "catacombs": 27.4,
-        "secrets": 2455,
+        "secrets": 2458,
         "revenants": 21225386,
         "svens": 100856,
         "tarantula": 1014630,
@@ -1243,14 +1221,14 @@
         "skill_average": 42.5
     },
     "AyyyTanay": {
-        "weight": 10020,
-        "slayers": 1817831,
-        "catacombs": 38.58,
-        "secrets": 22510,
+        "weight": 10136,
+        "slayers": 1857331,
+        "catacombs": 38.79,
+        "secrets": 22971,
         "revenants": 1347178,
         "svens": 261180,
         "tarantula": 148956,
-        "enderman": 60517,
+        "enderman": 100017,
         "skill_average": 47.25
     },
     "Pxzin": {
@@ -1265,10 +1243,10 @@
         "skill_average": 51.5
     },
     "wanx": {
-        "weight": 11258,
+        "weight": 11279,
         "slayers": 1812050,
-        "catacombs": 45.97,
-        "secrets": 35715,
+        "catacombs": 46.0,
+        "secrets": 35784,
         "revenants": 1003000,
         "svens": 152000,
         "tarantula": 400050,
@@ -1276,29 +1254,29 @@
         "skill_average": 43.625
     },
     "Flar3zy": {
-        "weight": 10264,
-        "slayers": 3991125,
-        "catacombs": 42.51,
-        "secrets": 50247,
+        "weight": 10281,
+        "slayers": 3997375,
+        "catacombs": 42.53,
+        "secrets": 50473,
         "revenants": 3077125,
         "svens": 255000,
         "tarantula": 601500,
-        "enderman": 57500,
+        "enderman": 63750,
         "skill_average": 45.5
     },
     "BLTR": {
-        "weight": 15024,
-        "slayers": 7040750,
+        "weight": 15084,
+        "slayers": 7154500,
         "catacombs": 41.47,
         "secrets": 35013,
         "revenants": 3761625,
         "svens": 920000,
         "tarantula": 401000,
-        "enderman": 1958125,
+        "enderman": 2071875,
         "skill_average": 52.625
     },
     "poke_lol": {
-        "weight": 10157,
+        "weight": 10186,
         "slayers": 4304991,
         "catacombs": 36.68,
         "secrets": 7987,
@@ -1320,10 +1298,10 @@
         "skill_average": 50.125
     },
     "Elena15788": {
-        "weight": 17672,
+        "weight": 17696,
         "slayers": 10253004,
-        "catacombs": 45.37,
-        "secrets": 53450,
+        "catacombs": 45.39,
+        "secrets": 53652,
         "revenants": 8659625,
         "svens": 485375,
         "tarantula": 1008000,
@@ -1331,14 +1309,36 @@
         "skill_average": 52.0
     },
     "EhCorn4": {
-        "weight": 8401,
+        "weight": 8426,
         "slayers": 1100639,
-        "catacombs": 38.14,
-        "secrets": 10366,
+        "catacombs": 38.21,
+        "secrets": 10434,
         "revenants": 501905,
         "svens": 138450,
         "tarantula": 451500,
         "enderman": 8784,
         "skill_average": 47.375
+    },
+    "Your_Neighbor": {
+        "weight": 14208,
+        "slayers": 4266560,
+        "catacombs": 35.58,
+        "secrets": 26953,
+        "revenants": 2105020,
+        "svens": 594755,
+        "tarantula": 1559300,
+        "enderman": 7485,
+        "skill_average": 54.5
+    },
+    "WhoCutTheCheez": {
+        "weight": 8037,
+        "slayers": 952301,
+        "catacombs": 43.21,
+        "secrets": 22713,
+        "revenants": 680380,
+        "svens": 100035,
+        "tarantula": 151780,
+        "enderman": 20106,
+        "skill_average": 42.0
     }
 }
