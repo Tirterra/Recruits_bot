@@ -137,7 +137,7 @@ def stats_embed(stats, arg):
 
 def dungeons_embed(dungeons, secrets, arg):
 
-    embed = discord.Embed(titel=f"**{arg}'s Dungeon Catacombs**", description=f"{arg} is catacomb level {dungeons['catacombs']['level']}")
+    embed = discord.Embed(title=f"**{arg}'s Dungeon Catacombs**", description=f"{arg} is catacomb level {dungeons['catacombs']['level']}")
     embed.add_field(name="Healer", value=f"Level: {dungeons['healer']['level']}")
     embed.add_field(name="Mage", value=f"Level: {dungeons['mage']['level']}")
     embed.add_field(name="Berserk", value=f"Level: {dungeons['berserk']['level']}")
