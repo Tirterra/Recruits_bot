@@ -9,10 +9,16 @@ def get_data(uuid, profile, **kwargs):
     url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
     res = requests.get(url).json()["profile"]
     res2 = res['community_upgrades']['upgrade_states']
-    res = res["members"][uuid]
 
+    minions = []
+    for member in res["members"]:
+        for minion in res["members"][member]["crafted_generators"]:
+            minions.append(minion)
+
+    res = res["members"][uuid]
     data = {}
     data.update({"upgrades" : res2})
+    data.update({"minions" : minions})
 
     for arg in kwargs:
         data.update({arg : res[kwargs[arg]]})

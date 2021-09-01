@@ -113,6 +113,32 @@ async def stats(ctx, arg=None):
 
     DIR_PATH = os.path.dirname(__file__)
 
+    unique_minions = {
+        0 : 5,
+        5 : 6,
+        15 : 7,
+        30 : 8,
+        50 : 9,
+        75 : 10,
+        100 : 11,
+        125 : 12,
+        150 : 13,
+        175 : 14,
+        200 : 15,
+        225 : 16,
+        250 : 17,
+        275 : 18,
+        300 : 19,
+        350 : 20,
+        400 : 21,
+        450 : 22,
+        500 : 23,
+        550 : 24,
+        600 : 25,
+        650 : 26,
+        700 : 27,
+    }
+
     if arg is None:
         with open(DIR_PATH+r"\linked.json", "r") as file:
             linked = json.load(file)
@@ -132,10 +158,18 @@ async def stats(ctx, arg=None):
     slayers_xp = slayers["total"]
     normal_weight = weight["total"]["normal"]
     overflow_weight = weight["total"]["overflow"]
-    data = get_data(uuid, profile, pets="pets", coins="coin_purse", minions="crafted_generators", collection="unlocked_coll_tiers")
+    data = get_data(uuid, profile, pets="pets", coins="coin_purse", collection="unlocked_coll_tiers")
     pets = len(data["pets"])
     coins = data["coins"]
-    minions = len(data["minions"])
+    uniques= len(data["minions"])
+    for count, i in enumerate(sorted(data["minions"])) : print(i, count)
+    previous = 0
+
+    for i in unique_minions:
+        if uniques <= i :
+            minions = unique_minions[previous]
+        else:
+            previous = i
     collections = len(data["collection"])
 
     for value in data["upgrades"]:
