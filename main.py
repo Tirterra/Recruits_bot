@@ -76,7 +76,6 @@ async def stats(ctx, arg=None):
     pets = len(data["pets"])
     coins = data["coins"]
     uniques= len(data["minions"])
-    for count, i in enumerate(sorted(data["minions"])) : print(i, count)
     previous = 0
 
     for i in unique_minions:
