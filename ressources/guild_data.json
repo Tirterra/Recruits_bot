@@ -1,0 +1,24 @@
+{
+    "Username": {
+        "weight": 11021,
+        "slayers": 2937895,
+        "catacombs": 40.24,
+        "secrets": 0,
+        "revenants": 1895200,
+        "svens": 717480,
+        "tarantula": 259915,
+        "enderman": 65300,
+        "skill_average": 48.875
+    },
+    "Other example": {
+        "weight": 9779,
+        "slayers": 4626225,
+        "catacombs": 31.37,
+        "secrets": 0,
+        "revenants": 2616125,
+        "svens": 1003750,
+        "tarantula": 1000250,
+        "enderman": 6100,
+        "skill_average": 50.25
+    }
+}
