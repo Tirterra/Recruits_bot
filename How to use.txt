@@ -1,8 +1,0 @@
-install python --> https://www.youtube.com/watch?v=UvcQlPZ8ecA
-open cmd
-do pip install -U discord.py
-then, after it's done pip install requests
-open credentials.json and place your token and your api key inside the quotes
-run main.py
-if you want it to update every day run schedule_update.py
-else you can use the command -update, you need to be administrator to use the command
