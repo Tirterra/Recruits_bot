@@ -19,7 +19,7 @@ from update_data.update_leaderboard import update_data
 
 
 DIR_PATH = os.path.dirname(__file__)
-with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
     TOKEN = json.load(file)["TOKEN"]
 
 client = commands.Bot(command_prefix="-")
@@ -91,7 +91,12 @@ def update():
 
     start = time.time()
     print("Started Update")
-    update_data()
+    success = update_data()
+
+    if success is False:
+        print("Data couldn't be updated.")
+        return
+
     end = time.time()
     print(f"data updated in {end - start}")
 
