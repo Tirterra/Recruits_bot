@@ -18,7 +18,7 @@ def get_weight(profile, uuid):
     try:
         res = requests.get(url).json()["profile"]["members"][uuid]    # Get all the data from hypixel's API.
     except KeyError:
-        return (None, None, None, None)
+        return (False, False, False, False)
 
     dungeons = get_dungeons(res)   # extract and process the data to get the different weights.
     slayers = get_slayers(res)
