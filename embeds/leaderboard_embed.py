@@ -1,7 +1,8 @@
 import discord
+from player_info.get_skin import get_avatar
 
 # Returns an embed with the leaderboard of a given type of leaderboard.
-def leaderboard_embed(book, page, leaderbord, average, pos):
+def leaderboard_embed(book, page, leaderbord, average, pos, arg):
     
     leaderboard_embed = ""
 
@@ -20,6 +21,10 @@ def leaderboard_embed(book, page, leaderbord, average, pos):
             )
         embed.add_field(name="\u200b", value=field)
         embed.set_footer(text=f"You are ranked #{pos+1} in guild")
+
+        avatar_url = get_avatar(arg)
+        embed.set_thumbnail(url=avatar_url)
+
 
         return embed
 

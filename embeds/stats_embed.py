@@ -1,5 +1,6 @@
 import discord
 from math import ceil
+from player_info.get_skin import get_avatar
 
 #Returns an embed with a bunch of stats.
 def stats_embed(stats, arg):
@@ -15,5 +16,8 @@ def stats_embed(stats, arg):
     embed.add_field(name="Minion Slots", value=stats["minions"])
     embed.add_field(name="Pets", value=stats["pets"])
     embed.add_field(name="Collection tiers unlocked", value=stats["collections"])
+
+    avatar_url = get_avatar(arg)
+    embed.set_thumbnail(url=avatar_url)
 
     return embed

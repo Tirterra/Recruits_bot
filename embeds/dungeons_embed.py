@@ -1,4 +1,5 @@
 import discord
+from player_info.get_skin import get_avatar
 
 # Returns a embed withh all the dungeon stats.
 def dungeons_embed(dungeons, secrets, arg):
@@ -44,6 +45,9 @@ def dungeons_embed(dungeons, secrets, arg):
         pass
 
     fastest_times_embed = str(f"""```{fastest_times_str}```""")
-
     embed.add_field(name="Fastest Floor clears", value=fastest_times_embed)
+
+    avatar_url = get_avatar(arg)
+    embed.set_thumbnail(url=avatar_url)
+
     return embed
