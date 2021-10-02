@@ -20,7 +20,7 @@ def get_current(uuid):
         profiles = None
 
     if profiles is None:
-        return (None, None)
+        return (False, False)
 
     for profile in profiles:   # I set the current profile to the most recently saved profile.
 
@@ -39,7 +39,7 @@ def get_current(uuid):
             continue
 
     if "current" not in locals():   # If there was an error, set the values to None.
-        current = None
-        cute_name = None
+        current = False
+        cute_name = False
     
     return (current, cute_name)
