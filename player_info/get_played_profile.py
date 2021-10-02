@@ -6,31 +6,29 @@ import os
 # Returns the ID of a player's played profile.
 def get_current(uuid):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\player_info", "")
-    with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/player_info", "")
+    with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
         API_KEY = json.load(file)["API_KEY"]
 
-
-    try:   # I try to get all the profiles of a player.
+    try:
         url = f"https://api.hypixel.net/player?key={API_KEY}&uuid={uuid}"
         res = requests.get(url)
-        res.raise_for_status()   # If there is a connection error, raise an HTTPError.
         res = res.json()
-        profiles = res["player"]["stats"]["SkyBlock"]["profiles"].keys()
+        profiles = list(res["player"]["stats"]["SkyBlock"]["profiles"].keys())
         last_save = 0
-    except HTTPError:   # If there was an error, set the profiles to None.
+    except KeyError:
         profiles = None
 
     if profiles is None:
         return (None, None)
 
     for profile in profiles:   # I set the current profile to the most recently saved profile.
-        
+
         cute_name = res["player"]["stats"]["SkyBlock"]["profiles"][profile]["cute_name"]
         url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
         res2 = requests.get(url).json()
 
-        if res2["profile"] is None:
+        if "profile" not in res2.keys():
             continue
 
         try:
