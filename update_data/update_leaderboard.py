@@ -15,11 +15,11 @@ from player_info.get_played_profile import get_current
 from update_data.get_guild_list import get_guild_list
 from update_data.secrets import get_secrets
 
-
+# Updates a player's data.
 def update_player(member):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\update_data", "")
-    with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/update_data", "")
+    with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
         API_KEY = json.load(file)["API_KEY"]
         
     uuid = member["uuid"]   # Gets the username from the uuid.
@@ -32,7 +32,7 @@ def update_player(member):
     (profile, cute_name) = get_current(uuid)   # Gets the current profile.
 
     if profile is None:
-        return
+        return None
 
     (weight, dungeons, slayers, skills) = get_weight(profile, uuid)   # Gets all the main stats of a player.
 
@@ -63,22 +63,35 @@ def update_player(member):
 # Updates all the data I need to create the leaderboards.
 def update_data():
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\update_data", "")
-    with open(DIR_PATH+r"\ressources\credentials.json", "r") as file:
+    DIR_PATH = os.path.dirname(__file__).replace(r"/update_data", "")
+    with open(DIR_PATH+r"/ressources/credentials.json", "r") as file:
         GUILD_ID = json.load(file)["GUILD_ID"]
 
     guild_list = get_guild_list(GUILD_ID)
+
+    if guild_list is False:   # If the connection is so bad that it cannot update, just don't update today.
+        return False
+
     data = {}
 
     for count, member in enumerate(guild_list):   # Append all the player data in a dict.
 
+        start = time.time()
+
         player_data = update_player(member)
+
+        print(time.time() - start)
+
+        if time.time() - start < 0.6:
+            time.sleep(0.6 - time.time() + start)
 
         if player_data is None:
             continue
 
         data.update(player_data)
 
-    with open(DIR_PATH+r"\ressources\guild_data.json", "w+") as file:
+    with open(DIR_PATH+r"/ressources/guild_data.json", "w+") as file:
         json.dump(data, file, indent=4)
+
+    return True   # Return True so I know if there was an error or no.
 

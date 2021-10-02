@@ -6,7 +6,7 @@ import os
 # Returns the secrets a player has.
 def get_secrets(url, player):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\data_processing", "")
+    DIR_PATH = os.path.dirname(__file__).replace(r"/update_data", "")
 
     try:
         res = requests.get(url)
@@ -14,15 +14,13 @@ def get_secrets(url, player):
         res = res.json()
         secrets = res["player"]["achievements"]["skyblock_treasure_hunter"]
     except HTTPError:   # If there was an error, get the most recent data.
-        with open(DIR_PATH+r"\ressources\guild_data.json", "r") as file:
+        with open(DIR_PATH+r"/ressources/guild_data.json", "r") as file:
             secrets = json.load(file)
             try:
                 secrets = secrets[player]["secrets"]
             except KeyError:
                 secrets = 0
     except KeyError:   # If the API are off, set the secrets to 0.
-        secrets = 0
-    else:
         secrets = 0
         
     return secrets
