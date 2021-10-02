@@ -41,7 +41,7 @@ def get_leaderboard(arg):
         else:
             return arg
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\leaderboard", "")
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/leaderboard", "")
 
     availables = [   # List of available leaderboards.
         "catacombs",
@@ -68,7 +68,7 @@ def get_leaderboard(arg):
 
         return embed, arg
 
-    with open(DIR_PATH+r"\ressources\guild_data.json", "r") as file:   # Create a leaderboard from the saved data.
+    with open(DIR_PATH+r"/ressources/guild_data.json", "r") as file:   # Create a leaderboard from the saved data.
         guild_data = json.load(file)
     
     leaderboard = {}

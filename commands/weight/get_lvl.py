@@ -7,8 +7,8 @@ import os
 # Transforms the skill exp into skill level.
 def get_skill_lvl(player_xp, cap):
     
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :   # Loads the xp per level.
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :   # Loads the xp per level.
         required_xp = json.load(file)["skill_xp_to_level"]
     previous = 0
 
@@ -28,8 +28,8 @@ def get_skill_lvl(player_xp, cap):
 # This really is just the same thing but with slayer xp.
 def get_slayer_lvl(player_xp):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :
         required_xp = json.load(file)["slayer_xp_to_level"]
     previous = 0
 
@@ -47,8 +47,8 @@ def get_slayer_lvl(player_xp):
 # Same thing here as well.
 def get_dungeon_lvl(player_xp):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :
         required_xp = json.load(file)["catacombs_xp_to_level"]
     previous = 0
 
@@ -70,8 +70,8 @@ def get_dungeon_lvl(player_xp):
 # Returns a dict with all the skill levels, overflow xp and skill average.
 def get_skills(res):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :   # Loads the level caps.
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :   # Loads the level caps.
         caps = json.load(file)["caps"]
 
     skills = {

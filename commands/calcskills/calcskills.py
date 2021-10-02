@@ -5,8 +5,8 @@ import discord
 # Returns an embed with the xp you need to go from a start skill level to another level.
 def calcskills(arg):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\calcskills", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :   # I get a dictionary with the exp per level. 
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/calcskills", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :   # I get a dictionary with the exp per level. 
         levels = json.load(file)["skill_levels_to_xp"]
 
     args = arg.split(" ")

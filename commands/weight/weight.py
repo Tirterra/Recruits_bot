@@ -10,10 +10,10 @@ from embeds.weight_embed import weight_embed
 # Returns an embed with all the weight stats.
 def weight(ctx, arg=None):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
 
     if arg is None:   # Check if the user is linked if he didn't specify a username.
-        with open(DIR_PATH+r"\ressources\linked.json", "r") as file:
+        with open(DIR_PATH+r"/ressources/linked.json", "r") as file:
             linked = json.load(file)
             if str(ctx.message.author) in linked.keys():
                 arg = linked[str(ctx.message.author)]

@@ -12,18 +12,18 @@ from embeds.dungeons_embed import dungeons_embed
 # Returns an embed with a bunch of dungeons stats.
 def catacombs(ctx, arg=None):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\catacombs", "")
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/catacombs", "")
 
     if arg is None:   # If the user gives no argument, I try to see if he's linked.
-        with open(DIR_PATH+r"\ressources\linked.json", "r") as file:
+        with open(DIR_PATH+r"/ressources/linked.json", "r") as file:
             linked = json.load(file)
             if str(ctx.message.author) in linked.keys():
                 arg = linked[str(ctx.message.author)]
-            else:   # Returns an erro if not linked and no argument was given.
-                embed = discord.Embed(titel="Error", description="Invalid argument: pls insert a valid username or try linking !")
+            else:   # Returns an error if not linked and no argument was given.
+                embed = discord.Embed(title="Error", description="Invalid argument: pls insert a valid username or try linking !")
                 return embed
 
-    with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+    with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
         API_KEY = json.load(file)["API_KEY"]
 
     uuid = get_uuid(arg)
@@ -33,8 +33,10 @@ def catacombs(ctx, arg=None):
         embed = discord.Embed(title="Error", description=f"{arg} doesn't have a skyblock profile")
         return embed
 
-    with open(DIR_PATH+r"\ressources\guild_data.json", "r") as file:
-        secrets = json.load(file)[arg]["secrets"]  
+    with open(DIR_PATH+r"/ressources/guild_data.json", "r") as file:
+        secrets = json.load(file)
+        print(secrets)
+        secrets = secrets[arg]["secrets"]  
 
     url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
     res = requests.get(url).json()["profile"]["members"][uuid]

@@ -12,12 +12,12 @@ from embeds.stats_embed import stats_embed
 # Returns an embed with a bunch of stats.
 def stats(ctx, arg):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\stats", "")
-    with open(DIR_PATH+r"\ressources\constants.json", "r") as file :   # Access a dict with minions slots and unique minions.
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/stats", "")
+    with open(DIR_PATH+r"/ressources/constants.json", "r") as file :   # Access a dict with minions slots and unique minions.
         unique_minions = json.load(file)["minions"]
 
     if arg is None:   # If the user didn't give an argument, try to see if he's linked.
-        with open(DIR_PATH+r"\ressources\linked.json", "r") as file:
+        with open(DIR_PATH+r"/ressources/linked.json", "r") as file:
             linked = json.load(file)
             if str(ctx.message.author) in linked.keys():
                 arg = linked[str(ctx.message.author)]

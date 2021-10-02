@@ -5,8 +5,8 @@ import os
 # Returns a bunch of data for the stats command.
 def get_data(uuid, profile, **kwargs):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\stats", "")
-    with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/stats", "")
+    with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
         API_KEY = json.load(file)["API_KEY"]
 
     url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"   # I get the data from hypixel's API.

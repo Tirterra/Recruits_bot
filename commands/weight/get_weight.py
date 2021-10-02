@@ -10,12 +10,15 @@ from commands.weight.dungeons_weight import get_dungeons_weight
 # Returns a tuple with four dicts. Total weight, skills, slayers, dungeons weight.
 def get_weight(profile, uuid):
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\weight", "")
-    with open(DIR_PATH+r"\ressources\credentials.json", "r+") as file :
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/weight", "")
+    with open(DIR_PATH+r"/ressources/credentials.json", "r+") as file :
         API_KEY = json.load(file)["API_KEY"]
         
     url = f"https://api.hypixel.net/skyblock/profile?key={API_KEY}&profile={profile}"
-    res = requests.get(url).json()["profile"]["members"][uuid]    # Get all the data from hypixel's API.
+    try:
+        res = requests.get(url).json()["profile"]["members"][uuid]    # Get all the data from hypixel's API.
+    except KeyError:
+        return (None, None, None, None)
 
     dungeons = get_dungeons(res)   # extract and process the data to get the different weights.
     slayers = get_slayers(res)

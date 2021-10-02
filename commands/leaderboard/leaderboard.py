@@ -26,8 +26,8 @@ def get_rank(leaderboard, target):
 # Returns an embed with the guild leaderboard.
 def leaderboard(ctx, arg):    
 
-    DIR_PATH = os.path.dirname(__file__).replace(r"\commands\leaderboard", "")
-    with open(DIR_PATH+r"\ressources\linked.json", "r") as file:
+    DIR_PATH = os.path.dirname(__file__).replace(r"/commands/leaderboard", "")
+    with open(DIR_PATH+r"/ressources/linked.json", "r") as file:
         linked = json.load(file)
 
     page = arg[-2:].replace(" ", "")   # Gets the page that the user asked for, if he didn't, sets it to 1.
@@ -52,6 +52,6 @@ def leaderboard(ctx, arg):
     book = get_booked_leaderboard(leaderboard)   # Do the magic and create the embed.
     average = get_guild_average(leaderboard)
     rank = get_rank(leaderboard, target)
-    embed = leaderboard_embed(book, page, arg, average, rank)
+    embed = leaderboard_embed(book, page, arg, average, rank, target)
 
     return embed
