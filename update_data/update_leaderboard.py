@@ -31,10 +31,13 @@ def update_player(member):
     name = name[len(name)-1]["name"]
     (profile, cute_name) = get_current(uuid)   # Gets the current profile.
 
-    if profile is None:
-        return None
+    if profile is False:
+        return False
 
     (weight, dungeons, slayers, skills) = get_weight(profile, uuid)   # Gets all the main stats of a player.
+
+    if weight is False:   # If there was a connection error.
+        return False
 
     total_weight = weight["total"]["normal"] + weight["total"]["overflow"]
     total_slayer_xp = slayers["total"]
@@ -85,7 +88,7 @@ def update_data():
         if time.time() - start < 0.6:
             time.sleep(0.6 - time.time() + start)
 
-        if player_data is None:
+        if player_data is False:
             continue
 
         data.update(player_data)
